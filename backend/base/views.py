@@ -38,5 +38,7 @@ def get_product_by_id(request, pk):
     Returns:
         list: List with a single dict that contains Product's Infos
     """
-    product = filter(lambda item: item['_id'] == pk, products)
-    return Response(product)
+    for product in products:
+        if product['_id'] == pk:
+            return Response(product)
+    return Response({})
