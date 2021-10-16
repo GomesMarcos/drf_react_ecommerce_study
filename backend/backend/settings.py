@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from os import environ
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+print('\n\n\n', environ.get('SECRET'), '\n\n\n')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -132,4 +138,4 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DEVELOP MODE ONLY!!!
-CORS_ALLOW_ALL_ORIGINS = environ.get('ALLOW_CORS')
+CORS_ALLOW_ALL_ORIGINS = eval(environ.get('ALLOW_CORS'))
